@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Personas</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Lista de Personas</h1>
+    </header>
+    <main>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in personas %}
+                <tr>
+                    <td>{{ p.0 }}</td>
+                    <td>{{ p.1 }}</td>
+                    <td>{{ p.2 }}</td>
+                    <td>{{ p.3 }}</td>
+                    <td>{{ p.4 }}</td>
+                    <td>{{ p.5 }}</td>
+                    <td><a href="/eliminar?id={{ p.0 }}" class="btn-delete">Eliminar</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No hay personas registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <a href="/index.html" class="btn-back">Volver al formulario</a>
+    </main>
+    <footer>
+        <p>&copy; 2023 - Administrar Personas</p>
+    </footer>
+</body>
+</html>
